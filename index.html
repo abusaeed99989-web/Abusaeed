@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Obsidian Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="nav-brand" href="#">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <rect x="2" y="2" width="16" height="16" rx="4" fill="currentColor" opacity="0.15"/>
+        <rect x="5" y="5" width="10" height="10" rx="2" fill="currentColor"/>
+      </svg>
+      The Obsidian Hotel
+    </a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="toggle-icon" id="themeIcon">
+        <!-- Moon icon (shown in dark mode) -->
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M13.5 9.5a6 6 0 01-7-7 6.5 6.5 0 100 13 6 6 0 007-6z" fill="currentColor"/>
+        </svg>
+        <!-- Sun icon (shown in light mode) -->
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="3" fill="currentColor"/>
+          <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.22 3.22l1.42 1.42M11.36 11.36l1.42 1.42M3.22 12.78l1.42-1.42M11.36 4.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="toggle-label" id="themeLabel">Light</span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <img
+        class="hero-img"
+        src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80"
+        alt="The Obsidian Hotel lobby"
+      />
+      <div class="hero-overlay">
+        <div class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="4"/></svg>
+          Dubai, UAE
+        </div>
+        <h1 class="hero-title">The Obsidian Hotel</h1>
+        <div class="hero-meta">
+          <span class="stars" aria-label="5 stars">★★★★★</span>
+          <span class="rating-score">4.9</span>
+          <span class="rating-count">· 312 reviews</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main content grid -->
+    <div class="content-grid">
+
+      <!-- Left: Details -->
+      <div class="details">
+
+        <!-- Amenities -->
+        <section class="section">
+          <h2 class="section-title">Amenities</h2>
+          <ul class="amenities-grid" aria-label="Hotel amenities">
+            <li class="amenity-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9h14M9 2v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/></svg>
+              WiFi
+            </li>
+            <li class="amenity-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="8" width="14" height="7" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 8V6a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Pool
+            </li>
+            <li class="amenity-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Spa
+            </li>
+            <li class="amenity-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 9h6M9 6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Gym
+            </li>
+            <li class="amenity-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 14h14M4 14V8l5-5 5 5v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Restaurant
+            </li>
+            <li class="amenity-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="6" cy="14" r="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="14" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M1 3h2l2 8h8l2-5H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Valet Parking
+            </li>
+            <li class="amenity-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v4M9 12v4M2 9h4M12 9h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+              Room Service
+            </li>
+            <li class="amenity-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 11l3-6 4 3 3-5 4 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Airport Transfer
+            </li>
+          </ul>
+        </section>
+
+        <!-- Room Types -->
+        <section class="section">
+          <h2 class="section-title">Room Types</h2>
+          <div class="rooms-list" id="roomsList">
+
+            <div class="room-card selected" data-room="deluxe" data-price="280">
+              <div class="room-card-header">
+                <div>
+                  <h3 class="room-name">Deluxe Room</h3>
+                  <p class="room-desc">Elegant room with panoramic city views, king-size bed, and marble bathroom.</p>
+                  <ul class="room-features">
+                    <li>45 m² · King bed · City view</li>
+                    <li>Marble bathroom · Nespresso · Smart TV</li>
+                  </ul>
+                </div>
+                <div class="room-price-block">
+                  <span class="room-price">$280</span>
+                  <span class="room-per-night">/ night</span>
+                  <div class="room-selected-badge">Selected</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="room-card" data-room="suite" data-price="520">
+              <div class="room-card-header">
+                <div>
+                  <h3 class="room-name">Suite</h3>
+                  <p class="room-desc">Spacious suite with a private lounge, Burj Khalifa views, and butler service.</p>
+                  <ul class="room-features">
+                    <li>90 m² · King bed · Lounge area</li>
+                    <li>Soaking tub · Butler service · Balcony</li>
+                  </ul>
+                </div>
+                <div class="room-price-block">
+                  <span class="room-price">$520</span>
+                  <span class="room-per-night">/ night</span>
+                  <div class="room-selected-badge">Selected</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="room-card" data-room="penthouse" data-price="1200">
+              <div class="room-card-header">
+                <div>
+                  <h3 class="room-name">Penthouse Suite</h3>
+                  <p class="room-desc">The pinnacle of luxury — private rooftop terrace, plunge pool, and full-floor exclusivity.</p>
+                  <ul class="room-features">
+                    <li>280 m² · 2 Bedrooms · Rooftop terrace</li>
+                    <li>Plunge pool · Private chef · Rolls-Royce pickup</li>
+                  </ul>
+                </div>
+                <div class="room-price-block">
+                  <span class="room-price">$1,200</span>
+                  <span class="room-per-night">/ night</span>
+                  <div class="room-selected-badge">Selected</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right: Booking Widget -->
+      <aside class="booking-widget" id="bookingWidget">
+        <div class="widget-header">
+          <span class="widget-price" id="widgetPrice">$280</span>
+          <span class="widget-per-night">/ night</span>
+        </div>
+
+        <form class="booking-form" id="bookingForm" novalidate>
+
+          <div class="form-row two-col">
+            <div class="form-field" id="fieldCheckin">
+              <label for="checkin">Check-in</label>
+              <input type="date" id="checkin" name="checkin" autocomplete="off" />
+              <span class="field-error">Please select a check-in date</span>
+            </div>
+            <div class="form-field" id="fieldCheckout">
+              <label for="checkout">Check-out</label>
+              <input type="date" id="checkout" name="checkout" autocomplete="off" />
+              <span class="field-error">Please select a check-out date</span>
+            </div>
+          </div>
+
+          <div class="form-field" id="fieldGuests">
+            <label for="guests">Guests</label>
+            <div class="guest-counter">
+              <button type="button" class="counter-btn" id="guestMinus" aria-label="Decrease guests">−</button>
+              <span class="guest-count" id="guestCount">2</span>
+              <button type="button" class="counter-btn" id="guestPlus" aria-label="Increase guests">+</button>
+            </div>
+            <span class="field-error">At least 1 guest required</span>
+          </div>
+
+          <div class="form-field">
+            <label>Room Type</label>
+            <div class="room-selector" id="roomSelector">
+              <label class="radio-option selected" data-price="280">
+                <input type="radio" name="roomType" value="deluxe" checked />
+                <span class="radio-label">Deluxe Room</span>
+                <span class="radio-price">$280</span>
+              </label>
+              <label class="radio-option" data-price="520">
+                <input type="radio" name="roomType" value="suite" />
+                <span class="radio-label">Suite</span>
+                <span class="radio-price">$520</span>
+              </label>
+              <label class="radio-option" data-price="1200">
+                <input type="radio" name="roomType" value="penthouse" />
+                <span class="radio-label">Penthouse Suite</span>
+                <span class="radio-price">$1,200</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Price breakdown -->
+          <div class="price-breakdown" id="priceBreakdown">
+            <div class="breakdown-row">
+              <span id="breakdownLabel">$280 × 1 night</span>
+              <span id="breakdownSubtotal">$280</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Taxes &amp; fees (15%)</span>
+              <span id="breakdownTax">$42</span>
+            </div>
+            <div class="breakdown-divider"></div>
+            <div class="breakdown-row total">
+              <span>Total</span>
+              <span id="breakdownTotal">$322</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-reserve" id="btnReserve">Reserve Now</button>
+          <p class="widget-note">You won't be charged yet</p>
+
+        </form>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Confirmation Overlay -->
+  <div class="confirmation-overlay" id="confirmationOverlay" hidden aria-modal="true" role="dialog" aria-labelledby="confirmTitle">
+    <div class="confirmation-card">
+      <div class="confirm-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="13" stroke="#5e6ad2" stroke-width="2"/>
+          <path d="M8 14l4 4 8-8" stroke="#5e6ad2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="confirm-title" id="confirmTitle">Reservation Confirmed!</h2>
+      <p class="confirm-subtitle">Your stay has been booked successfully.</p>
+
+      <div class="confirm-details">
+        <div class="confirm-row">
+          <span class="confirm-key">Booking ID</span>
+          <span class="confirm-value" id="confirmId">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Hotel</span>
+          <span class="confirm-value">The Obsidian Hotel, Dubai</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Room</span>
+          <span class="confirm-value" id="confirmRoom">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Check-in</span>
+          <span class="confirm-value" id="confirmCheckin">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Check-out</span>
+          <span class="confirm-value" id="confirmCheckout">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Guests</span>
+          <span class="confirm-value" id="confirmGuests">—</span>
+        </div>
+        <div class="confirm-divider"></div>
+        <div class="confirm-row total">
+          <span class="confirm-key">Total Charged</span>
+          <span class="confirm-value" id="confirmTotal">—</span>
+        </div>
+      </div>
+
+      <button class="btn-done" id="btnDone">Done</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

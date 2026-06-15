@@ -1,0 +1,687 @@
+/* ── Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font: system-ui, -apple-system, "SF Pro Display", "Segoe UI", sans-serif;
+  --radius-btn: 8px;
+  --radius-card: 14px;
+  --radius-sm: 8px;
+  --transition: 150ms ease;
+}
+
+/* ── Theme: Dark (default) ────────────────────────────── */
+[data-theme="dark"] {
+  --bg:          #010102;
+  --surface-1:   #0d0d0f;
+  --surface-2:   #13141a;
+  --surface-3:   #1a1b23;
+  --surface-4:   #23252a;
+  --border:      #23252a;
+  --border-mid:  #2e3038;
+  --text:        #f7f8f8;
+  --text-muted:  #8a8f98;
+  --text-faint:  #4a4f5a;
+  --accent:      #5e6ad2;
+  --accent-hover:#6e7ae2;
+  --accent-dim:  rgba(94,106,210,0.12);
+  --shadow:      0 0 0 1px var(--border), 0 4px 20px rgba(0,0,0,0.5);
+  --shadow-hover:0 0 0 1px var(--border-mid), 0 8px 32px rgba(0,0,0,0.6);
+  --nav-bg:      rgba(1,1,2,0.88);
+  --overlay-bg:  rgba(0,0,0,0.72);
+}
+
+/* ── Theme: Light ─────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:          #f7f8f8;
+  --surface-1:   #ffffff;
+  --surface-2:   #f0f0f5;
+  --surface-3:   #e8e8f0;
+  --surface-4:   #dddde8;
+  --border:      #dddde8;
+  --border-mid:  #c8c8d8;
+  --text:        #0d0d0f;
+  --text-muted:  #6b7280;
+  --text-faint:  #9ca3af;
+  --accent:      #5e6ad2;
+  --accent-hover:#4e5ac2;
+  --accent-dim:  rgba(94,106,210,0.10);
+  --shadow:      0 0 0 1px var(--border), 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover:0 0 0 1px var(--border-mid), 0 6px 24px rgba(0,0,0,0.12);
+  --nav-bg:      rgba(247,248,248,0.88);
+  --overlay-bg:  rgba(0,0,0,0.5);
+}
+
+/* ── Base ─────────────────────────────────────────────── */
+body {
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+  min-height: 100vh;
+}
+
+/* ── Navbar ───────────────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-family: var(--font);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.theme-toggle:hover {
+  background: var(--surface-3);
+  border-color: var(--border-mid);
+  color: var(--text);
+}
+
+.toggle-icon { display: flex; align-items: center; }
+
+/* Show correct icon per theme */
+[data-theme="dark"]  .icon-sun  { display: none; }
+[data-theme="dark"]  .icon-moon { display: block; }
+[data-theme="light"] .icon-moon { display: none; }
+[data-theme="light"] .icon-sun  { display: block; }
+
+/* ── Hero ─────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.hero:hover .hero-img { transform: scale(1.02); }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.15) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px 48px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(94,106,210,0.22);
+  border: 1px solid rgba(94,106,210,0.4);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #a8b0f0;
+  letter-spacing: 0.01em;
+  margin-bottom: 12px;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+}
+
+.hero-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+}
+
+.stars { color: #f5c518; letter-spacing: 1px; }
+.rating-score { font-weight: 600; }
+.rating-count { color: rgba(255,255,255,0.6); }
+
+/* ── Content Grid ─────────────────────────────────────── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 32px 80px;
+  align-items: start;
+}
+
+/* ── Section Headers ──────────────────────────────────── */
+.section { margin-bottom: 48px; }
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+/* ── Amenities ────────────────────────────────────────── */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  list-style: none;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.amenity-item svg { color: var(--accent); flex-shrink: 0; }
+.amenity-item:hover { background: var(--surface-2); border-color: var(--border-mid); color: var(--text); }
+
+/* ── Room Cards ───────────────────────────────────────── */
+.rooms-list { display: flex; flex-direction: column; gap: 14px; }
+
+.room-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.room-card:hover {
+  background: var(--surface-2);
+  border-color: var(--border-mid);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.room-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  box-shadow: 0 0 0 1px var(--accent), var(--shadow);
+}
+
+.room-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.room-name {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.room-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  max-width: 420px;
+}
+
+.room-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.room-features li {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.room-price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+.room-price {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.room-per-night {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.room-selected-badge {
+  display: none;
+  padding: 3px 10px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-top: 6px;
+}
+.room-card.selected .room-selected-badge { display: block; }
+
+/* ── Booking Widget ───────────────────────────────────── */
+.booking-widget {
+  position: sticky;
+  top: 76px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.widget-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.widget-price {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  transition: color var(--transition);
+}
+
+.widget-per-night {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Form Fields ──────────────────────────────────────── */
+.booking-form { display: flex; flex-direction: column; gap: 18px; }
+
+.form-row.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.form-field input[type="date"] {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  color-scheme: dark;
+}
+
+[data-theme="light"] .form-field input[type="date"] {
+  color-scheme: light;
+}
+
+.form-field input[type="date"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.form-field.has-error input[type="date"],
+.form-field.has-error .guest-counter {
+  border-color: #e05b5b;
+  box-shadow: 0 0 0 3px rgba(224,91,91,0.15);
+}
+
+.field-error {
+  font-size: 12px;
+  color: #e05b5b;
+  display: none;
+}
+.form-field.has-error .field-error { display: block; }
+
+/* ── Guest Counter ────────────────────────────────────── */
+.guest-counter {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  overflow: hidden;
+  transition: border-color var(--transition);
+  width: fit-content;
+}
+
+.counter-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+  font-family: var(--font);
+}
+.counter-btn:hover { background: var(--surface-3); }
+.counter-btn:disabled { color: var(--text-faint); cursor: not-allowed; }
+
+.guest-count {
+  min-width: 40px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  padding: 0 4px;
+  line-height: 40px;
+}
+
+/* ── Room Selector (radio) ────────────────────────────── */
+.room-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+  background: var(--surface-2);
+}
+.radio-option:hover { background: var(--surface-3); border-color: var(--border-mid); }
+.radio-option.selected { border-color: var(--accent); background: var(--accent-dim); }
+
+.radio-option input[type="radio"] {
+  accent-color: var(--accent);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.radio-label {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.radio-price {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Price Breakdown ──────────────────────────────────── */
+.price-breakdown {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.breakdown-row.total {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.breakdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 2px 0;
+}
+
+/* ── Reserve Button ───────────────────────────────────── */
+.btn-reserve {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.btn-reserve:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(94,106,210,0.35);
+}
+.btn-reserve:active { transform: translateY(0); }
+
+.widget-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+/* ── Confirmation Overlay ─────────────────────────────── */
+.confirmation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--overlay-bg);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 200ms ease;
+}
+
+.confirmation-overlay[hidden] { display: none; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.confirmation-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 40px 36px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow: var(--shadow-hover);
+  animation: slideUp 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.confirm-icon {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.confirm-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.confirm-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.confirm-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.confirm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.confirm-key { color: var(--text-muted); }
+.confirm-value { font-weight: 500; color: var(--text); font-variant-numeric: tabular-nums; }
+
+.confirm-row.total .confirm-key { font-weight: 600; color: var(--text); font-size: 15px; }
+.confirm-row.total .confirm-value { font-weight: 700; color: var(--accent); font-size: 16px; }
+
+.confirm-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+.btn-done {
+  width: 100%;
+  padding: 13px;
+  background: var(--surface-3);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+.btn-done:hover { background: var(--surface-4); border-color: var(--border-mid); }
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    padding: 32px 20px 64px;
+    gap: 0;
+  }
+
+  .booking-widget {
+    position: static;
+    order: -1;
+    margin-bottom: 40px;
+  }
+
+  .hero { height: 340px; }
+  .hero-overlay { padding: 28px 24px; }
+  .hero-title { font-size: 32px; }
+
+  .navbar { padding: 0 20px; }
+
+  .confirmation-card { padding: 28px 20px; }
+}
+
+@media (max-width: 480px) {
+  .form-row.two-col { grid-template-columns: 1fr; }
+  .hero { height: 260px; }
+  .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+}
