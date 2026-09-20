@@ -107,7 +107,10 @@ guestPlusBtn.addEventListener('click', () => {
 
 /* ── Date Inputs ───────────────────────────────────────── */
 function todayStr() {
-  return new Date().toISOString().slice(0, 10);
+  /* toISOString يرجّع تاريخ UTC — بعد منتصف الليل محليًا يعطي تاريخ الأمس */
+  const now = new Date();
+  const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+  return local.toISOString().slice(0, 10);
 }
 
 function setDateMin() {
@@ -244,8 +247,12 @@ function closeConfirmation() {
   bookingForm.reset();
   state.checkin  = '';
   state.checkout = '';
+  /* reset() ما يمسّ العدّاد ولا roomKey لأنهما خارج حقول النموذج */
+  state.guests  = 2;
+  state.roomKey = 'deluxe';
+  updateGuestButtons();
   checkoutEl.min = todayStr();
-  updatePriceDisplay();
+  selectRoom(state.roomKey); /* يحدّث الاختيار والسعر معًا */
 }
 
 btnDone.addEventListener('click', closeConfirmation);
